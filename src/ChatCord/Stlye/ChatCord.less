@@ -1,0 +1,225 @@
+// Use this at the top of your LESS file
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.ChatCord {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0;
+}
+
+.Top {
+  flex-grow: 0;
+}
+
+.Top2 {
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgb(112, 187, 252);
+}
+
+.Body {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  padding: 0;
+  background-color: rgb(123, 134, 144);
+  overflow: hidden;
+}
+
+.Channels {
+  display: flex;
+  width: 3.5rem; /* Fixed width for channel list */
+  padding: 0.5rem; /* Internal padding */
+  display: flex; /* Flex layout for channels */
+  flex-direction: column; /* Column layout */
+  background-color: rgb(49, 90, 126); /* Background color */
+  color: white; /* Text color */
+}
+
+.InBody {
+  display: flex; /* Row layout for messages */
+  flex-direction: column; /* Horizontal layout */
+  flex-grow: 1; /* Use remaining space */
+  padding: 0.5rem; /* Internal padding for content */
+  overflow-x: auto; /* Enable horizontal scrolling for content overflow */
+  background-color: rgb(255, 255, 255); /* Background for messages */
+  color: #333; /* Text color for messages */
+}
+
+.ChatItem {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  position: relative; /* Position context for absolute elements */
+}
+
+.ChatHeader {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.LastMessage {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.CopyButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.CopyButton:hover {
+  background-color: #0056b3;
+}
+
+.ChatActions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.ChatAction {
+  display: flex;
+  flex-direction: column; /* Arrange label, input, and button vertically */
+  align-items: flex-start; /* Align items to the start */
+}
+
+.ChatAction label {
+  margin-bottom: 5px; /* Space between the label and input */
+}
+
+.ChatAction input {
+  margin-bottom: 10px; /* Space between input and button */
+  padding: 5px;
+  border: 1px solid #ccc; /* Basic border style */
+  border-radius: 3px; /* Rounded corners for the input */
+}
+
+.ChatAction button {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.ChatAction button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.LastMessageDate {
+  color: #999; /* Grey color for date */
+  font-size: 0.8em; /* Smaller font size */
+}
+
+.ChatContainer_forchat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.ChatHeader_forchat {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.ChatBody_forchat {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.MessagesList_forchat {
+  display: flex;
+  flex-direction: column;
+}
+
+.MessageItem_forchat {
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.MessageUser_forchat {
+  font-weight: bold;
+}
+
+.MessageImage_forchat {
+  max-width: 200px;
+  border-radius: 5px;
+}
+
+.MessageVideo_forchat {
+  max-width: 200px;
+  border-radius: 5px;
+}
+
+.ChatInputContainer_forchat {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.ChatInput_forchat {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+.UrlPreviewsContainer_forchat {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.UrlImagePreview_forchat {
+  max-height: 100px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.UrlVideoPreview_forchat {
+  max-width: 100px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.SendButton_forchat {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.SendButton_forchat:hover {
+  background-color: #218838;
+}
