@@ -62,6 +62,14 @@ class Channels extends Component {
           >
             Chats
           </div>
+          <div
+            onClick={() => {
+              Setting.InBody(3);
+            }}
+            className="Chat"
+          >
+            Style
+          </div>
           {this.state.brodes.map((res) => {
             return (
               <div
@@ -97,6 +105,10 @@ class InBody extends Component {
       <>
         {this.state.option == undefined ? (
           <Chats />
+        ) : this.state.option == 3 ? (
+          <>
+            <Style_User />
+          </>
         ) : (
           <ChatChat key={this.state.option} chat_id={this.state.option} />
         )}
@@ -147,7 +159,7 @@ class Chats extends Component {
     // Logic for joining a chat
     if (this.ChatName !== undefined && this.ChatName !== "") {
       Setting.Join_Chat(this.ChatName);
-      this.ChatName = "";
+      console.log(this.ChatName);
     }
   }
 
@@ -196,12 +208,7 @@ class Chats extends Component {
             const lastMessageDate = lastMessage
               ? new Date(lastMessage.timestamp).toLocaleString()
               : "No messages yet"; // formating the date
-            let username =
-              chat.messages.length > 0
-                ? Setting.Get_User(
-                    chat.messages[chat.messages.length - 1].userId
-                  )
-                : "";
+
             return (
               <div
                 key={chat.chat_id}
@@ -217,7 +224,13 @@ class Chats extends Component {
                 {lastMessage ? (
                   <div className="ChatBody">
                     <div className="LastMessage">
-                      <span>{lastMessage.userId}: </span>{" "}
+                      <span>
+                        {Setting.users != undefined
+                          ? Setting.users[lastMessage.userId].name ||
+                            lastMessage.userId
+                          : lastMessage.userId}
+                        :{" "}
+                      </span>{" "}
                       <span>{lastMessage.message}</span>{" "}
                       <span className="LastMessageDate">
                         {" "}
@@ -406,7 +419,8 @@ class ChatChat extends Component {
                     {dis++ == 0 ? (
                       <>
                         <div className="TopName">
-                          {msg.userId} -- {this.formatdate(msg.timestamp)}
+                          {Setting.users[msg.userId].name || msg.userId} --{" "}
+                          {this.formatdate(msg.timestamp)}
                         </div>
                       </>
                     ) : (
@@ -533,6 +547,38 @@ class ChatChat extends Component {
           </button>
         </div>
       </div>
+    );
+  }
+}
+
+class Style_User extends Component {
+  constructor(prob) {
+    super(prob);
+    this.state = { style: Setting.style || undefined };
+    Setting.Get_Style();
+  }
+
+  componentDidMount() {
+    Setting.style_status = (prob) => {
+      this.setState({ style: prob });
+    };
+  }
+
+  render() {
+    return (
+      <>
+        {this.state.style ? (
+          <>{JSON.stringify(this.state.style)}</>
+        ) : (
+          <div
+            onClick={() => {
+              Setting.Get_Style();
+            }}
+          >
+            Reload
+          </div>
+        )}
+      </>
     );
   }
 }

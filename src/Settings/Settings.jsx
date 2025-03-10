@@ -28,6 +28,8 @@ class Settings {
     this.login = () => {};
     this.get_all = () => {};
     this.chats = () => {};
+    this.style = {};
+    this.Style_status = () => {};
     this.users = {};
     this.WebS = undefined;
     this.logged = false;
@@ -151,6 +153,10 @@ class Settings {
           this.chats(this.gel_all_.chats);
           this.brodechats = this.gel_all_.brodechats;
           this.chats_ = this.gel_all_.chats;
+          this.users = {
+            ...(this.users || {}),
+            ...(this.gel_all_.users || {}),
+          };
           this.get_all(response.response);
         } else {
           console.warn("Getall failed");
@@ -158,10 +164,15 @@ class Settings {
         break;
       case "user_info":
         if (response.status === 1) {
-          this.users[response.user_id] = response.user_name;
-          this.onusers.map((res) => res());
+          //this.users[response.user_id] = response.user_name;
+          //this.onusers.map((res) => res());
         }
         break;
+      case "get_style":
+        if (response.status == 1) {
+          this.style = response.style;
+          this.style_status(this.style);
+        }
       case "get_chat":
         console.log("send chat");
         //console.log(response);
@@ -196,15 +207,23 @@ class Settings {
   }
 
   Get_User(prob) {
-    if (this.users[prob] == undefined) {
-      this.send({ type: "user_info", args: [prob] });
-      return prob;
-    }
-    return this.users[prob];
+    //if (this.users[prob] == undefined) {
+    //  this.send({ type: "user_info", args: [prob] });
+    //  return prob;
+    //}
+    //return this.users[prob];
   }
 
   Get_Chat(prob) {
     this.send({ type: "get_chat", args: [this.reference, prob] });
+  }
+
+  Get_Style() {
+    this.send({ type: "get_style", args: [this.reference] });
+  }
+
+  Update_Style(prob) {
+    this.send({ type: "update_style", args: [this.reference, prob] });
   }
 
   Send_Message(chat_id, message) {
