@@ -214,6 +214,13 @@ class Settings {
     });
   }
 
+  Leave_Chat(chat_id) {
+    this.send({
+      type: "leave_chat",
+      args: [this.reference, chat_id],
+    });
+  }
+
   async send(prob = {}) {
     if (this.WebS.readyState) {
       this.WebS.send(JSON.stringify(prob));

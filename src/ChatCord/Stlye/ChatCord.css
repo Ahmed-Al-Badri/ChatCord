@@ -59,12 +59,16 @@
   /* Text color for messages */
 }
 .ChatItem {
-  border: 1px solid #ccc;
+  border: 2px solid #510404;
   border-radius: 5px;
   padding: 10px;
   margin: 5px;
+  cursor: pointer;
   position: relative;
   /* Position context for absolute elements */
+}
+.ChatItem:hover {
+  border-color: #0800ff;
 }
 .ChatHeader {
   font-weight: bold;
@@ -85,6 +89,20 @@
   bottom: 10px;
   right: 10px;
   z-index: 1;
+}
+.LeaveChat {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1;
+  right: calc(70px);
+  background-color: rgba(255, 133, 133, 0.49);
 }
 .CopyButton:hover {
   background-color: #0056b3;
@@ -211,4 +229,116 @@
 }
 .SendButton_forchat:hover {
   background-color: #218838;
+}
+.MessagesList_forchat {
+  overflow-y: auto;
+}
+.MessagesList_forchat {
+  position: relative;
+}
+.ControlSides {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.LeftSided {
+  position: relative;
+  height: 100%;
+  min-width: 40px;
+}
+.SpecLeft {
+  position: relative;
+  left: 2px;
+  padding-left: 5px;
+  padding-right: 2px;
+  width: calc(100% - 10px);
+}
+.SpecLeft:hover > .LeftSide,
+.SpecLeft:hover > .RightSide {
+  display: block;
+}
+.Temps {
+  position: absolute;
+  display: none;
+  height: 90%;
+  top: 5%;
+  width: 1px;
+}
+.LeftSide {
+  position: absolute;
+  display: none;
+  height: 90%;
+  top: 5%;
+  width: 1px;
+  background-image: linear-gradient(rgba(0, 255, 0, 0.286), rgba(0, 0, 255, 0.334));
+  left: 0px;
+}
+.RightSide {
+  position: absolute;
+  display: none;
+  height: 90%;
+  top: 5%;
+  width: 1px;
+  background-image: linear-gradient(rgba(0, 0, 255, 0.334), rgba(0, 255, 0, 0.286));
+  right: 1px;
+}
+.MessageItem_forchat:hover .HoverDate {
+  display: block;
+}
+.HoverDate {
+  width: 40px;
+  display: none;
+}
+.DateFormat {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #7d7d7d;
+  font-weight: bold;
+}
+.ChatBody_forchat {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.MessageItem_forchat {
+  color: #525252;
+  position: relative;
+  background-color: white;
+  padding: 2px;
+  padding-top: 2px;
+  max-height: auto;
+  font-size: 0.9rem;
+}
+.MessageItem_forchat:hover {
+  background-color: #d9d9d9;
+}
+.TopName {
+  color: #6d6dff;
+  font-size: 1.2rem;
+}
+.ImageLocation {
+  width: 40px;
+  height: auto;
+  height: 50px;
+  background-color: #525252;
+}
+.Odd {
+  background-color: #ffffff;
+}
+.SimilarOut {
+  margin-bottom: 0px;
+}
+.Displaying_Sets {
+  padding: 2px;
+}
+.line {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  height: 1px;
+  bottom: 0px;
+  background-image: linear-gradient(to right, rgba(0, 255, 0, 0.286), rgba(0, 0, 255, 0.334));
 }

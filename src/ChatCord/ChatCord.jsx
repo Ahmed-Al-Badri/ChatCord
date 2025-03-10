@@ -132,6 +132,10 @@ class Chats extends Component {
       });
   }
 
+  handleLeaveChat(chat_id) {
+    Setting.Leave_Chat(chat_id);
+  }
+
   create() {
     if (this.ChatName !== undefined && this.ChatName !== "") {
       Setting.Create_Chat(this.ChatName);
@@ -228,9 +232,22 @@ class Chats extends Component {
                 )}
                 <button
                   className="CopyButton"
-                  onClick={() => this.handleCopyChatId(chat.chat_id)}
+                  onClick={(prob) => {
+                    prob.preventDefault();
+                    prob.stopPropagation();
+                    this.handleCopyChatId(chat.chat_id);
+                  }}
                 >
                   Copy
+                </button>
+                <button
+                  onClick={(prob) => {
+                    prob.stopPropagation();
+                    this.handleLeaveChat(chat.chat_id);
+                  }}
+                  className="LeaveChat"
+                >
+                  Leave
                 </button>
               </div>
             );
@@ -306,38 +323,156 @@ class ChatChat extends Component {
     return previews;
   }
 
+  formatdate(dates) {
+    let current = new Date();
+    let date = new Date(dates);
+    let year = date.getFullYear();
+    if (year - current.getFullYear() != 0) {
+      return (
+        <div className="DateFormat">{`${date.getMonth()}/${date.getDate()}/${year} ${date.getHours()}:${date.getMinutes()}`}</div>
+      );
+    }
+    let month = date.getMonth();
+    if (month - current.getMonth() != 0) {
+      return (
+        <div className="DateFormat">{`${month}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`}</div>
+      );
+    }
+    let day = date.getDate();
+    if (day - current.getDate()) {
+      return (
+        <div className="DateFormat">{`On ${day}th ${date.getHours()}:${date.getMinutes()}`}</div>
+      );
+    }
+
+    return (
+      <div className="DateFormat">{`${date.getHours()}:${date.getMinutes()}`}</div>
+    );
+  }
+
   renderMessages() {
     const { chat_data } = this.state;
+    let last_id = "";
+    let similar = false;
+    let indexs = 0;
+    let dis = 0;
 
     return (
       <div className="MessagesList_forchat">
         {chat_data.messages &&
-          chat_data.messages.map((msg, index) => (
-            <div key={index} className="MessageItem_forchat">
-              <span className="MessageUser_forchat">{msg.userId}:</span>
-              {msg.message.startsWith("http") ? (
-                <a href={msg.message} target="_blank" rel="noopener noreferrer">
-                  {this.isImage(msg.message) ? (
-                    <img
-                      src={msg.message}
-                      alt="User sent content"
-                      className="MessageImage_forchat"
-                    />
-                  ) : this.isVideo(msg.message) ? (
-                    <video controls className="MessageVideo_forchat">
-                      <source src={msg.message} type="video/mp4" />
-                      <source src={msg.message} type="video/ogg" />
-                      <source src={msg.message} type="video/webm" />
-                    </video>
-                  ) : (
-                    msg.message
-                  )}
-                </a>
-              ) : (
-                <span>{msg.message}</span>
-              )}
-            </div>
-          ))}
+          chat_data.messages.map((msg, index) => {
+            let urls = msg.message;
+            urls = this.extractMediaUrls(urls);
+            if (urls.length) {
+              console.log(urls);
+            }
+            if (last_id != msg.userId) {
+              last_id = msg.userId;
+              dis = 0;
+              indexs++;
+            }
+            similar = chat_data.messages[index + 1];
+            if (similar) {
+              if (msg.userId == similar.userId) {
+                similar = true;
+              } else {
+                similar = false;
+              }
+            } else {
+              similar = false;
+            }
+            return (
+              <div
+                key={index}
+                className={`MessageItem_forchat ${
+                  similar == true ? "SimilarOut" : ""
+                }  ${indexs % 2 == 1 ? "Odd" : ""}`}
+              >
+                <div className="ControlSides">
+                  <div className="LeftSided">
+                    {dis == 0 ? (
+                      <>
+                        <div className="ImageLocation">AA</div>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                    <div className="HoverDate">
+                      {this.formatdate(msg.timestamp)}
+                    </div>
+                  </div>
+
+                  <div className="SpecLeft">
+                    {dis++ == 0 ? (
+                      <>
+                        <div className="TopName">
+                          {msg.userId} -- {this.formatdate(msg.timestamp)}
+                        </div>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                    <div className="LeftSide"></div>
+                    <div className="RightSide"></div>
+                    <span>{msg.message}</span>
+                    <div className="Displaying_Sets">
+                      {urls.map((res, val) => {
+                        return (
+                          <>
+                            {res.startsWith("http") ? (
+                              <a
+                                key={val}
+                                href={res}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {this.isImage(res) ? (
+                                  <img
+                                    src={res}
+                                    key={val}
+                                    alt="User sent content"
+                                    className="MessageImage_forchat"
+                                  />
+                                ) : this.isVideo(res) ? (
+                                  <video
+                                    key={val}
+                                    controls
+                                    className="MessageVideo_forchat"
+                                  >
+                                    <source src={res} type="video/mp4" />
+                                    <source src={res} type="video/ogg" />
+                                    <source src={res} type="video/webm" />
+                                  </video>
+                                ) : (
+                                  <></>
+                                )}
+                              </a>
+                            ) : (
+                              <span>{res}</span>
+                            )}
+                          </>
+                        );
+
+                        ///aaaa
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                {similar == true ? (
+                  <>
+                    <div className="line"></div>
+                  </>
+                ) : (
+                  <></>
+                )}
+
+                {/*
+
+                */}
+              </div>
+            );
+          })}
         {/* Anchor for scrolling */}
         <div ref={this.messagesEndRef} />
       </div>
