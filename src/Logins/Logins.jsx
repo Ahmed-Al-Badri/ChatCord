@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Setting from "../Settings/Settings";
-import "./Logins.less";
+import "./Logins.css";
 
 class Server extends Component {
   constructor(probs) {
