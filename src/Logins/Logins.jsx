@@ -29,7 +29,16 @@ class Server extends Component {
   render() {
     return (
       <div className="Login">
-        <div>Login to server</div>
+        <div>
+          Login to server
+          <a
+            className="hrefright"
+            href="https://github.com/Ahmed-Al-Badri/ServerData"
+          >
+            The Server Repo
+          </a>
+        </div>
+
         <div className="Details">
           Server details
           <div className="Options">
