@@ -6,6 +6,10 @@
 
 > To run the server, execute the following command: node ./ChatCord.js. The server is configured to run on port 8081 by default, but you can change it to any address if necessary. Link to Server Repo: https://github.com/Ahmed-Al-Badri/ServerData
 
+## Review Video
+
+> A video reviewing how to use the ChatCord app. (Video Link)[https://pdx.zoom.us/rec/share/lIOe1ojBm--GwPj9rKwMLR78NWXJRUHrvsuZi9vNwYcC7EpLJKOqKDAAhb55eYzU.hZzRO5EegtPE3KpE?startTime=1741649543000]
+
 ## Setup
 
 > To use this application, you will need to set up a websocket to manage the data flow between clients and the server, primarily for controlling chat functionalities.
