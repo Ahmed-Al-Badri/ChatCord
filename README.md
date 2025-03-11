@@ -1,14 +1,14 @@
 ## ChatCord
 
-> ChatCord is an application that uses React and websockets to enable real-time communication among users. Link to ChatCord Frontend Repo: https://github.com/Ahmed-Al-Badri/ChatCord
+> ChatCord is an application that uses React and websockets to enable real-time communication among users. [Link to ChatCord Frontend Repo](https://github.com/Ahmed-Al-Badri/ChatCord)
 
 ## Server
 
-> To run the server, execute the following command: node ./ChatCord.js. The server is configured to run on port 8081 by default, but you can change it to any address if necessary. Link to Server Repo: https://github.com/Ahmed-Al-Badri/ServerData
+> To run the server, execute the following command: node ./ChatCord.js. The server is configured to run on port 8081 by default, but you can change it to any address if necessary. [Link to Server Repo](https://github.com/Ahmed-Al-Badri/ServerData)
 
 ## Review Video
 
-> A video reviewing how to use the ChatCord app. (Video Link)[https://pdx.zoom.us/rec/share/lIOe1ojBm--GwPj9rKwMLR78NWXJRUHrvsuZi9vNwYcC7EpLJKOqKDAAhb55eYzU.hZzRO5EegtPE3KpE?startTime=1741649543000]
+> A video reviewing how to use the ChatCord app. [Video Link](https://pdx.zoom.us/rec/share/lIOe1ojBm--GwPj9rKwMLR78NWXJRUHrvsuZi9vNwYcC7EpLJKOqKDAAhb55eYzU.hZzRO5EegtPE3KpE?startTime=1741649543000)
 
 ## Setup
 
