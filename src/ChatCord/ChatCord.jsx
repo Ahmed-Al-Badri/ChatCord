@@ -156,7 +156,6 @@ class Chats extends Component {
   }
 
   join() {
-    // Logic for joining a chat
     if (this.ChatName !== undefined && this.ChatName !== "") {
       Setting.Join_Chat(this.ChatName);
       console.log(this.ChatName);
@@ -322,7 +321,6 @@ class ChatChat extends Component {
     const message = event.target.value;
     this.setState({ message });
 
-    // Regex to match URLs for images and videos
     this.setState({
       urlPreviews: this.extractMediaUrls(message),
     });

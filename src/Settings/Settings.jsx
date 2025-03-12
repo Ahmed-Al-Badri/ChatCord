@@ -11,9 +11,9 @@ let CREATS = {
 };
 
 let SERVER = {
-  style: sessionStorage.getItem("ws") || "ws", // Added default to ws
+  style: sessionStorage.getItem("ws") || "ws",
   address: sessionStorage.getItem("address") || "",
-  port: sessionStorage.getItem("port") || "8081", // Default port
+  port: sessionStorage.getItem("port") || "8081",
 };
 
 const CHATS = {
@@ -58,7 +58,7 @@ class Settings {
     sessionStorage.setItem("password", prob.password);
     LOGINS = prob;
     if (this.logged) {
-      this.reconnectWebSocket(); // Create the WebSocket after login
+      this.reconnectWebSocket();
       this.logged = false;
     }
     console.log(prob);
@@ -73,7 +73,7 @@ class Settings {
     console.log(prob);
     console.log("create login");
     if (this.logged) {
-      this.reconnectWebSocket(); // Create the WebSocket after account creation
+      this.reconnectWebSocket();
       this.logged = false;
     }
     this.send({
@@ -88,7 +88,7 @@ class Settings {
 
   reconnectWebSocket(prob = SERVER) {
     if (this.WebS) {
-      this.WebS.close(); // Close existing connection if any
+      this.WebS.close();
     }
 
     this.WebS = new WebSocket(`${prob.style}://${prob.address}:${prob.port}`);
@@ -116,8 +116,6 @@ class Settings {
       this.WebS.close();
       return;
     }
-    // Handle server responses here
-    // For example, you might want to distinguish based on response type
     switch (response.type) {
       case "login":
         if (response.status === 1) {
@@ -184,7 +182,6 @@ class Settings {
             this.Chat_effect(response.chat);
           }
         }
-      // Other response types can be handled accordingly
       default:
         console.log(response);
         console.warn("Unknown response type received.");
