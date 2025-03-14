@@ -28,6 +28,8 @@ class Balls extends Component {
         speed: [Math.random() * 2 - 1, Math.random() * 2 - 1],
         size: Math.random() * 20 + 5,
         history: [],
+        history1: [],
+        history2: [],
       });
     }
 
@@ -75,7 +77,7 @@ class Balls extends Component {
       ball.loc[1] += ball.speed[1];
       ball.history.push([...ball.loc]);
 
-      if (ball.history.length > 100) {
+      if (ball.history.length > 85) {
         ball.history.shift();
       }
 
@@ -139,6 +141,47 @@ class Balls extends Component {
       }
       ctx.stroke();
       ctx.closePath();
+
+      const angle = Math.atan2(ball.speed[1], ball.speed[0]);
+
+      //
+      ctx.strokeStyle = this.color;
+      ctx.beginPath();
+      if (ball.history.length > 1) {
+        for (
+          let i = Math.floor(ball.history.length / 2);
+          i < ball.history.length;
+          i++
+        ) {
+          const [x, y] = ball.history[i];
+          ctx.lineTo(
+            x + ball.size * Math.cos(angle + Math.PI / 2),
+            y + ball.size * Math.sin(angle + Math.PI / 2)
+          );
+        }
+      }
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.strokeStyle = this.color;
+      ctx.beginPath();
+      if (ball.history.length > 1) {
+        for (
+          let i = Math.floor(ball.history.length / 2);
+          i < ball.history.length;
+          i++
+        ) {
+          const [x, y] = ball.history[i];
+          ctx.lineTo(
+            x + ball.size * Math.cos(angle - Math.PI / 2),
+            y + ball.size * Math.sin(angle - Math.PI / 2)
+          );
+        }
+      }
+      ctx.stroke();
+      ctx.closePath();
+
+      //
 
       ctx.fillStyle = this.color;
       ctx.beginPath();
