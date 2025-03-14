@@ -18,14 +18,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #70bbfc;
+  background-color: #70bbfc00;
 }
 .Body {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
   padding: 0;
-  background-color: #7b8690;
+  background-color: #7b869000;
   overflow: hidden;
 }
 .Channels {
@@ -37,7 +37,7 @@
   /* Flex layout for channels */
   flex-direction: column;
   /* Column layout */
-  background-color: #315a7e;
+  background-color: #00427bc3;
   /* Background color */
   color: white;
   /* Text color */
@@ -53,7 +53,7 @@
   /* Internal padding for content */
   overflow-x: auto;
   /* Enable horizontal scrolling for content overflow */
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0);
   /* Background for messages */
   color: #333;
   /* Text color for messages */
@@ -161,7 +161,7 @@
   overflow: hidden;
 }
 .ChatHeader_forchat {
-  background-color: #007bff;
+  background-color: #007bffcc;
   color: white;
   padding: 10px;
   text-align: center;
@@ -221,14 +221,14 @@
 }
 .SendButton_forchat {
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #28a746d1;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 .SendButton_forchat:hover {
-  background-color: #218838;
+  background-color: #218837cc;
 }
 .MessagesList_forchat {
   overflow-y: auto;
@@ -271,7 +271,10 @@
   height: 90%;
   top: 5%;
   width: 1px;
-  background-image: linear-gradient(rgba(0, 255, 0, 0.286), rgba(0, 0, 255, 0.334));
+  background-image: linear-gradient(
+    rgba(0, 255, 0, 0.286),
+    rgba(0, 0, 255, 0.334)
+  );
   left: 0px;
 }
 .RightSide {
@@ -280,7 +283,10 @@
   height: 90%;
   top: 5%;
   width: 1px;
-  background-image: linear-gradient(rgba(0, 0, 255, 0.334), rgba(0, 255, 0, 0.286));
+  background-image: linear-gradient(
+    rgba(0, 0, 255, 0.334),
+    rgba(0, 255, 0, 0.286)
+  );
   right: 1px;
 }
 .MessageItem_forchat:hover .HoverDate {
@@ -306,14 +312,14 @@
 .MessageItem_forchat {
   color: #525252;
   position: relative;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.788);
   padding: 2px;
   padding-top: 2px;
   max-height: auto;
   font-size: 0.9rem;
 }
 .MessageItem_forchat:hover {
-  background-color: #d9d9d9;
+  background-color: #d9d9d9be;
 }
 .TopName {
   color: #6d6dff;
@@ -326,7 +332,7 @@
   background-color: #525252;
 }
 .Odd {
-  background-color: #ffffff;
+  background-color: #ffffffab;
 }
 .SimilarOut {
   margin-bottom: 0px;
@@ -340,5 +346,9 @@
   left: 5%;
   height: 1px;
   bottom: 0px;
-  background-image: linear-gradient(to right, rgba(0, 255, 0, 0.286), rgba(0, 0, 255, 0.334));
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 255, 0, 0.286),
+    rgba(0, 0, 255, 0.334)
+  );
 }
