@@ -137,10 +137,10 @@ class Chats extends Component {
     navigator.clipboard
       .writeText(chatId)
       .then(() => {
-        console.log(`Chat ID ${chatId} copied to clipboard!`);
+        //console.log(`Chat ID ${chatId} copied to clipboard!`);
       })
       .catch((err) => {
-        console.error("Failed to copy: ", err);
+        //console.error("Failed to copy: ", err);
       });
   }
 
@@ -158,7 +158,7 @@ class Chats extends Component {
   join() {
     if (this.ChatName !== undefined && this.ChatName !== "") {
       Setting.Join_Chat(this.ChatName);
-      console.log(this.ChatName);
+      //console.log(this.ChatName);
     }
   }
 
@@ -212,7 +212,7 @@ class Chats extends Component {
               <div
                 key={chat.chat_id}
                 onClick={() => {
-                  console.log(chat.chat_id);
+                  //console.log(chat.chat_id);
                   Setting.InBody(chat.chat_id);
                 }}
                 className="ChatItem"
@@ -375,7 +375,7 @@ class ChatChat extends Component {
             let urls = msg.message;
             urls = this.extractMediaUrls(urls);
             if (urls.length) {
-              console.log(urls);
+              //console.log(urls);
             }
             if (last_id != msg.userId) {
               last_id = msg.userId;

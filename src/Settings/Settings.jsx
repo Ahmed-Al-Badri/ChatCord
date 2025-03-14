@@ -61,7 +61,7 @@ class Settings {
       this.reconnectWebSocket();
       this.logged = false;
     }
-    console.log(prob);
+    //console.log(prob);
     this.send({ type: "login", args: [prob.username_email, prob.password] });
   }
 
@@ -70,8 +70,8 @@ class Settings {
     sessionStorage.setItem("email", prob.email);
     sessionStorage.setItem("password", prob.password);
     CREATS = prob;
-    console.log(prob);
-    console.log("create login");
+    //console.log(prob);
+    //console.log("create login");
     if (this.logged) {
       this.reconnectWebSocket();
       this.logged = false;
@@ -94,7 +94,7 @@ class Settings {
     this.WebS = new WebSocket(`${prob.style}://${prob.address}:${prob.port}`);
     this.WebS.onopen = () => {
       this.server(true);
-      console.log("WebSocket connection established.");
+      //console.log("WebSocket connection established.");
     };
 
     this.WebS.onmessage = (event) => {
@@ -120,32 +120,32 @@ class Settings {
       case "login":
         if (response.status === 1) {
           sessionStorage.setItem("ref", response.response.user.reference);
-          console.log(response);
+          //console.log(response);
           this.reference = response.response.user.reference;
-          console.log("the ref given from the server is " + this.reference);
+          //console.log("the ref given from the server is " + this.reference);
           this.login(true);
-          console.log("Login successful.", response.data);
+          //console.log("Login successful.", response.data);
         } else {
           this.login(false);
-          console.log("Login failed.", response.response);
+          //console.log("Login failed.", response.response);
         }
         break;
       case "create_account":
         if (response.status === 1) {
           sessionStorage.setItem("ref", response.response.user.reference);
           this.reference = response.response.user.reference;
-          console.log(response);
+          //console.log(response);
           this.login(true);
-          console.log("Account created successfully.", response.data);
+          //console.log("Account created successfully.", response.data);
         } else {
           this.login(false);
-          console.log("Account creation failed.", response.response);
+          //console.log("Account creation failed.", response.response);
         }
         break;
       case "get_all":
-        console.log(response);
+        //console.log(response);
         if (response.status === 1) {
-          console.log(response);
+          //console.log(response);
           this.gel_all_ = response.response;
           //this.chats = this.gel_all_.chats;
           this.chats(this.gel_all_.chats);
@@ -157,7 +157,7 @@ class Settings {
           };
           this.get_all(response.response);
         } else {
-          console.warn("Getall failed");
+          //console.warn("Getall failed");
         }
         break;
       case "user_info":
@@ -172,19 +172,19 @@ class Settings {
           this.style_status(this.style);
         }
       case "get_chat":
-        console.log("send chat");
-        //console.log(response);
+        //console.log("send chat");
+        ////console.log(response);
         if (response.status === 1) {
-          console.log("chat");
-          console.log("focus" + this.focus_chat);
-          console.log("the res" + response.chat_id);
+          //console.log("chat");
+          //console.log("focus" + this.focus_chat);
+          //console.log("the res" + response.chat_id);
           if (this.focus_chat == response.chat_id) {
             this.Chat_effect(response.chat);
           }
         }
       default:
-        console.log(response);
-        console.warn("Unknown response type received.");
+        //console.log(response);
+        //console.warn("Unknown response type received.");
         break;
     }
   }

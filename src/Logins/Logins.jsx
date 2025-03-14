@@ -23,7 +23,7 @@ class Server extends Component {
       address: this.address || "",
       port: this.port || "",
     });
-    console.log("The Address is " + this.address);
+    //console.log("The Address is " + this.address);
   }
 
   render() {
@@ -134,12 +134,14 @@ class Login extends Component {
 
   submit() {
     if (this.state.option === "create") {
-      console.log(
+      /*
+      //console.log(
         "Creating account with:",
         this.state.email,
         this.state.username,
         this.state.password
       );
+      */
       if (
         this.state.username != "" &&
         this.state.name != "" &&
@@ -160,7 +162,7 @@ class Login extends Component {
           password: this.state.password,
         });
       }
-      console.log("Logging in with:", this.state.username, this.state.password);
+      //console.log("Logging in with:", this.state.username, this.state.password);
     }
   }
 
